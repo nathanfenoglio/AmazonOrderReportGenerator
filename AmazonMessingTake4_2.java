@@ -333,18 +333,24 @@ public class AmazonMessingTake4_2 {
                         if(yearMonthDay[2] >= dayToCheckStart && yearMonthDay[2] <= dayToCheckEnd){
                             //the adding items and counts process
                             int match = 0;
-            
                             for(int s = 0; s < items.size(); s++){
                                 //count matches for each product item found in file
                                 if(amz[r][2].equals(items.get(s))){
                                     match++;
-                                    counts.set(s, counts.get(s) + Integer.parseInt(amz[r][3])); 
+                                    //if the # ordered comes over represented as a float,
+                                    //need to only get # before decimal point
+                                    String[] beforeDecimal = amz[r][3].split("\\.");
+                                    counts.set(s, counts.get(s) + Integer.parseInt(beforeDecimal[0]));
                                 }
                             }
-
+                            
                             if(match == 0){
                                items.add(amz[r][2]);
-                               counts.add(Integer.parseInt(amz[r][3]));
+                               //if the # ordered comes over represented as a float,
+                               //need to only get # before decimal point
+                               String[] beforeDecimal = amz[r][3].split("\\.");
+                               System.out.println(beforeDecimal[0]);
+                               counts.add(Integer.parseInt(beforeDecimal[0]));
                             }
                         }
                     }
@@ -359,13 +365,19 @@ public class AmazonMessingTake4_2 {
 
                                 if(amz[r][2].equals(items.get(s))){
                                     match++;
-                                    counts.set(s, counts.get(s) + Integer.parseInt(amz[r][3])); 
+                                    //if the # ordered comes over represented as a float,
+                                    //need to only get # before decimal point
+                                    String[] beforeDecimal = amz[r][3].split("\\.");
+                                    counts.set(s, counts.get(s) + Integer.parseInt(beforeDecimal[0]));
                                 }
                             }
 
                             if(match == 0){
                                items.add(amz[r][2]);
-                               counts.add(Integer.parseInt(amz[r][3]));
+                               //if the # ordered comes over represented as a float,
+                               //need to only get # before decimal point
+                               String[] beforeDecimal = amz[r][3].split("\\.");
+                               counts.add(Integer.parseInt(beforeDecimal[0]));
                             }
                         }
                     }
@@ -377,13 +389,19 @@ public class AmazonMessingTake4_2 {
                             for(int s = 0; s < items.size(); s++){
                                 if(amz[r][2].equals(items.get(s))){
                                     match++;
-                                    counts.set(s, counts.get(s) + Integer.parseInt(amz[r][3])); 
+                                    //if the # ordered comes over represented as a float,
+                                    //need to only get # before decimal point
+                                    String[] beforeDecimal = amz[r][3].split("\\.");
+                                    counts.set(s, counts.get(s) + Integer.parseInt(beforeDecimal[0]));
                                 }
                             }
 
                             if(match == 0){
                                items.add(amz[r][2]);
-                               counts.add(Integer.parseInt(amz[r][3]));
+                               //if the # ordered comes over represented as a float,
+                               //need to only get # before decimal point
+                               String[] beforeDecimal = amz[r][3].split("\\.");
+                               counts.add(Integer.parseInt(beforeDecimal[0]));
                             }
                         }
                     }
